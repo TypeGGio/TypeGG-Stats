@@ -8,7 +8,7 @@ from config import default_theme, dark_theme
 from database import users
 from database.users import get_user
 from graphs import sample
-from graphs.core import remove_file
+from graphs.core import remove_file, plt
 from utils import errors
 from utils.errors import red
 
@@ -54,6 +54,10 @@ class Theme(commands.Cog):
 
         if not color:
             return await ctx.send(embed=errors.missing_parameter(info))
+
+        if element == "line" and color in plt.colormaps():
+            bot_user["theme"]["line"] = color
+            return await run(ctx, bot_user)
 
         if color == "off" and element == "grid":
             bot_user["theme"]["grid"] = None

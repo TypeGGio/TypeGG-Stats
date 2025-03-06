@@ -8,7 +8,7 @@ def render(file_name: str, theme: dict, top_quotes: list[dict], title: str):
     pp = [quote["pp"] for quote in top_quotes]
     ax.plot(ranks, pp)
 
-    ax.set_title(title, fontsize=100)
+    ax.set_title(title, fontsize=30)
 
     apply_theme(ax, theme)
 
